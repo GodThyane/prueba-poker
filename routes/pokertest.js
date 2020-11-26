@@ -3,22 +3,30 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-    let listRi = req.body.listRi;
-    for (let i = 0; i < listRi.length; i++) {
-        listRi[i] = listRi[i].toFixed(5)
+    if(req.body.listRi == undefined || req.body.listRi.length == 0){
+        let result = {
+            message: 'Lista no ingresada'
+        }
+        res.send(result);
+    }else{
+        let listRi = req.body.listRi;
+        for (let i = 0; i < listRi.length; i++) {
+            listRi[i] = listRi[i].toFixed(5)
+        }
+        let pruebaPoker = new PruebaPoker(listRi);
+        let isOk = false;
+        if (pruebaPoker.chi2 > pruebaPoker.sum) {
+            isOk = true;
+        }
+        let result = {
+            isOk,
+            sum: pruebaPoker.sum,
+            chi2 : pruebaPoker.chi2,
+            results: pruebaPoker.typePoker
+        }
+        res.send(result);
     }
-    let pruebaPoker = new PruebaPoker(listRi);
-    let isOk = false;
-    if (pruebaPoker.chi2 > pruebaPoker.sum) {
-        isOk = true;
-    }
-    let result = {
-        isOk,
-        sum: pruebaPoker.sum,
-        chi2 : pruebaPoker.chi2,
-        results: pruebaPoker.typePoker
-    }
-    res.send(result);
+
 
 });
 
