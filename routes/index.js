@@ -6,4 +6,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Prueba poker' });
 });
 
+
+/* GET home page. */
+router.get('/ping', function(req, res, next) {
+  res.send('Pong!!!!');
+});
+
 module.exports = router;
