@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 /* GET home page. */
 router.get('/ping', function(req, res, next) {
-  res.send('Pong!!!!');
+  res.send('pong');
 });
 
 module.exports = router;
