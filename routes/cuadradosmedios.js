@@ -10,12 +10,12 @@ router.get('/', function (req, res, next) {
         res.send(result);
     } else {
         let size;
+        let semilla = req.body.semilla;
         if (req.body.size == undefined) {
-            size = 4;
+            size = semilla.toString().length;
         } else {
             size = req.body.size;
         }
-        let semilla = req.body.semilla;
         let cd = new Cuadradosmedios(semilla, size);
         cd.simulate();
 
