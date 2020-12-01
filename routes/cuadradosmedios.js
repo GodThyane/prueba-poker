@@ -3,28 +3,39 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-    let semilla = req.body.semilla;
-    let size = req.body.size;
-    let cd = new Cuadradosmedios(semilla, size);
+    if (req.body.semilla == undefined) {
+        let result = {
+            message: 'Semilla no ingresada'
+        }
+        res.send(result);
+    } else {
+        let size;
+        if (req.body.size == undefined) {
+            size = 4;
+        } else {
+            size = req.body.size;
+        }
+        let semilla = req.body.semilla;
+        let cd = new Cuadradosmedios(semilla, size);
+        cd.simulate();
 
-    cd.simulate();
+        let datas = [];
+        let result = {};
 
-    let datas = [];
-    let result = {};
+        for (let i in cd.results) {
 
-    for (let i in cd.results) {
-
-        var item = cd.results[i];
-        datas.push({
-            "xi": item.xi,
-            "xi^2": item.x2,
-            "Extensión": item.extension,
-            "Extracción": item.extraction,
-            "Ri": item.ri
-        });
+            var item = cd.results[i];
+            datas.push({
+                "xi": item.xi,
+                "xi^2": item.x2,
+                "Extensión": item.extension,
+                "Extracción": item.extraction,
+                "Ri": item.ri
+            });
+        }
+        result.datas = datas;
+        res.send(result);
     }
-    result.datas = datas;
-    res.send(result);
 });
 
 
@@ -49,7 +60,7 @@ class Cuadradosmedios {
             } else {
                 this.results.push(new Result(this.results.slice(-1)[0].extraction, this.n));
                 nRepeat = this.ifExist(this.results.slice(-1)[0].xi)
-                if(nRepeat != null){
+                if (nRepeat != null) {
                     finish = true;
                 }
             }
@@ -57,17 +68,18 @@ class Cuadradosmedios {
         this.results.splice(nRepeat, this.results.length - nRepeat)
         this.results.pop();
     }
-    ifExist(resultComp){
+
+    ifExist(resultComp) {
         let count = 0;
         let posRepeat = 0;
         for (const result of this.results) {
-            if(count != 1){
+            if (count != 1) {
                 posRepeat++;
             }
-            if(result.xi == resultComp){
+            if (result.xi == resultComp) {
                 count++;
             }
-            if(count == 2){
+            if (count == 2) {
                 return posRepeat;
             }
         }
