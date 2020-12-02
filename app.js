@@ -3,6 +3,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var cors = require('cors');
+
 var indexRouter = require('./routes/index');
 var pokerRouter = require('./routes/pokertest');
 var mediaRouter = require('./routes/mediatest');
@@ -17,10 +19,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/pokertest', pokerRouter);
-app.use('/mediatest', mediaRouter);
-app.use('/cuadradosmedios', cMediosRouter);
-app.use('/generaterandom', generateRandomRouter);
+
+app.use('/', cors(),indexRouter);
+app.use('/pokertest', cors(), pokerRouter);
+app.use('/mediatest',cors(), mediaRouter);
+app.use('/cuadradosmedios', cors(),cMediosRouter);
+app.use('/generaterandom', cors(),generateRandomRouter);
 
 module.exports = app;

@@ -1,10 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-var cors = require('cors');
-
 /* GET users listing. */
-router.get('/', cors(),function (req, res, next) {
+router.get('/',function (req, res, next) {
     if(req.body.listRi == undefined || req.body.listRi.length == 0){
         let result = {
             message: 'Lista no ingresada'
