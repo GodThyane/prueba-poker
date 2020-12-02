@@ -10,6 +10,7 @@ var pokerRouter = require('./routes/pokertest');
 var mediaRouter = require('./routes/mediatest');
 var cMediosRouter = require('./routes/cuadradosmedios');
 var generateRandomRouter = require('./routes/generaterandom');
+var normalizeRouter = require('./routes/normalize');
 
 var app = express();
 
@@ -25,5 +26,6 @@ app.use('/pokertest', cors(), pokerRouter);
 app.use('/mediatest',cors(), mediaRouter);
 app.use('/cuadradosmedios', cors(),cMediosRouter);
 app.use('/generaterandom', cors(),generateRandomRouter);
+app.use('/normalize', cors(),normalizeRouter);
 
 module.exports = app;

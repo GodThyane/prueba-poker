@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-/* GET users listing. */
-router.get('/', function (req, res, next) {
+
+
+router.post('/', function (req, res, next) {
     if (req.body.semilla == undefined) {
         let result = {
             message: 'Semilla no ingresada'
