@@ -25,6 +25,6 @@ app.use('/mediatest', mediaRouter);
 app.use('/cuadradosmedios', cMediosRouter);
 app.use('/generaterandom', generateRandomRouter);
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: '*', credentials: true }));
 
 module.exports = app;
