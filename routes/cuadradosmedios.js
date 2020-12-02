@@ -26,7 +26,7 @@ router.post('/', function (req, res, next) {
             var item = cd.results[i];
             datas.push({
                 "xi": item.xi,
-                "xi^2": item.x2,
+                "xi2": item.x2,
                 "Extensión": item.extension,
                 "Extracción": item.extraction,
                 "Ri": item.ri
