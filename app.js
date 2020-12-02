@@ -23,8 +23,4 @@ app.use('/mediatest', mediaRouter);
 app.use('/cuadradosmedios', cMediosRouter);
 app.use('/generaterandom', generateRandomRouter);
 
-app.get('/products/:id', function (req, res, next) {
-    res.json({msg: 'This is CORS-enabled for all origins!'})
-})
-
 module.exports = app;
