@@ -9,8 +9,8 @@ router.post('/',function (req, res, next) {
         res.send(result);
     } else {
         let ri = req.body.ri;
-        let max = req.body.max;
-        let min = req.body.min;
+        let max = Number.parseInt(req.body.max);
+        let min = Number.parseInt(req.body.min);
         let result = [];
         for (let i = 0; i < ri.length; i++) {
             result.push(min+(max-min)*ri[i]);

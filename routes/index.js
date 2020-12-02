@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 
 
 /* GET home page. */
-router.get('/ping', cors(), function (req, res, next) {
+router.get('/ping', function (req, res, next) {
     let result = {
         ping : 'pong'
     }

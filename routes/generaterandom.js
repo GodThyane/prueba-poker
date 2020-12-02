@@ -8,7 +8,7 @@ router.post('/',function (req, res, next) {
         }
         res.send(result);
     } else {
-        let n = req.body.n;
+        let n = Number.parseInt(req.body.n);
         let result = [];
         for (let i = 0; i < n; i++) {
             result.push(Math.random());
