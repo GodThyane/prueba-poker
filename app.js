@@ -25,6 +25,10 @@ app.use('/mediatest', mediaRouter);
 app.use('/cuadradosmedios', cMediosRouter);
 app.use('/generaterandom', generateRandomRouter);
 
-app.use(cors({ origin: '*', credentials: true }));
+app.setHeader('Access-Control-Allow-Origin', '*');
+
+app.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
+
+app.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 
 module.exports = app;
