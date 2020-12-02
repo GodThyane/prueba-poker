@@ -19,20 +19,27 @@ router.post('/', function (req, res, next) {
         let cd = new Cuadradosmedios(semilla, size);
         cd.simulate();
 
-        let datas = [];
-        let result = {};
+        let xi = [];
+        let xi2 = [];
+        let extension = [];
+        let extraccion = [];
+        let ri = [];
 
         for (let i in cd.results) {
             var item = cd.results[i];
-            datas.push({
-                "xi": item.xi,
-                "xi2": item.x2,
-                "Extensión": item.extension,
-                "Extracción": item.extraction,
-                "Ri": item.ri
-            });
+            xi.push(item.xi);
+            xi2.push(item.x2);
+            extension.push(item.extension);
+            extraccion.push(item.extraction);
+            ri.push(item.ri);
         }
-        result.datas = datas;
+        let result = {
+            xi : xi,
+            xi2 : xi2,
+            extension : extension,
+            extraccion : extraccion,
+            ri : ri
+        };
         res.send(result);
     }
 });
