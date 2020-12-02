@@ -10,11 +10,11 @@ router.post('/', function (req, res, next) {
         res.send(result);
     } else {
         let size;
-        let semilla = req.body.semilla;
+        let semilla = Number.parseInt(req.body.semilla);
         if (req.body.size == undefined) {
             size = semilla.toString().length;
         } else {
-            size = req.body.size;
+            size = Number.parseInt(req.body.size);
         }
         let cd = new Cuadradosmedios(semilla, size);
         cd.simulate();
@@ -23,7 +23,6 @@ router.post('/', function (req, res, next) {
         let result = {};
 
         for (let i in cd.results) {
-
             var item = cd.results[i];
             datas.push({
                 "xi": item.xi,
