@@ -11,8 +11,10 @@ router.get('/', cors(), function (req, res, next) {
 
 /* GET home page. */
 router.get('/ping', cors(), function (req, res, next) {
-    let ping = 'pong'
-    res.send(ping);
+    let result = {
+        ping : 'pong'
+    }
+    res.send(result);
 });
 
 module.exports = router;
