@@ -11,7 +11,9 @@ router.post('/', function (req, res, next) {
             message: 'Semilla no ingresada'
         }
         res.send(result);
-    } else {
+
+    }
+    else {
 
         //Se declara la semilla y el tamaño que va a tener la extracción
         let size;
@@ -20,7 +22,7 @@ router.post('/', function (req, res, next) {
         let semilla = Number.parseInt(req.body.semilla);
 
         //Si no se ingresa K, [size] toma el valor de la longitud de la semilla
-        if (req.body.size === undefined) {
+        if (req.body.size === undefined || req.body.size === "") {
             size = semilla.toString().length;
         } else {
             size = Number.parseInt(req.body.size);
