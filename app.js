@@ -29,7 +29,6 @@ app.use('/cuadradosmedios', cors(),cMediosRouter);
 app.use('/generaterandom', cors(),generateRandomRouter);
 app.use('/uniform', cors(),uniformRouter);
 app.post('/GnormalStd', cors() ,logic.generateNormalStdNumbers)
-app.post('/GnormalStd', cors() ,logic.generateNormalStdNumbers)
 app.post('/Pchi2', cors(), logic.testingChi2)
 app.post('/Pvarianza', cors(), logic.testingVarianza)
 
