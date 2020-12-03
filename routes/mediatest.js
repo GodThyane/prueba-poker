@@ -15,7 +15,7 @@ router.post('/',function (req, res, next) {
 
         //Se truncan los números a 5 dígitos
         for (let i = 0; i < listRi.length; i++) {
-            listRi[i] = listRi[i].toFixed(5)
+            listRi[i] = Number.parseFloat(listRi[i]).toFixed(5)
         }
         let pruebaMedios = new PruebaMedios(listRi);
 
