@@ -1,5 +1,5 @@
 var fs = require("fs");
-var path = 'src/resources/tableChi.txt';
+var path = './resources/tableChi.txt';
 
 const utilities = {}
 
