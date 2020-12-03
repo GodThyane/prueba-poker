@@ -55,13 +55,13 @@ class PruebaPoker {
             Ei: 0,
             Chi2: 0
         },
-        T: {
+        K: {
             Oi: 0,
             Prob: 0.1080,
             Ei: 0,
             Chi2: 0
         },
-        K: {
+        T: {
             Oi: 0,
             Prob: 0.0720,
             Ei: 0,
@@ -120,9 +120,9 @@ class PruebaPoker {
             } else if ((listCount.match(/3/g) || []).length == 1 && (listCount.match(/2/g) || []).length == 1) {
                 this.typePoker.F.Oi += 1;
             } else if ((listCount.match(/3/g) || []).length == 1) {
-                this.typePoker.K.Oi += 1;
-            } else if ((listCount.match(/2/g) || []).length == 2) {
                 this.typePoker.T.Oi += 1;
+            } else if ((listCount.match(/2/g) || []).length == 2) {
+                this.typePoker.K.Oi += 1;
             } else if ((listCount.match(/2/g) || []).length == 1) {
                 this.typePoker.O.Oi += 1;
             } else {
