@@ -200,7 +200,7 @@ function calcNiNormal(a,b,ri,ni){// se calculan Ni con la formula a+(b-a)*ri
     "mError": 0.05
 }
 */
-//***************Prueba de medias***********************/
+//***************Prueba de varianza***********************/
 logic.testingVarianza = (req, res) => {
     var ri = req.body.ri
     for(let i = 0; i < ri.length; i++){
@@ -220,10 +220,18 @@ logic.testingVarianza = (req, res) => {
     console.log("li ",li)
     var ls = chi2AlphaMediosInv /(12*(n-1))
     console.log("ls ",ls)
-    if(varianzaRi >= ls && varianzaRi >= li){
-        res.json({"varianza":varianzaRi, "limiteInferior": li, "limiteSuperior": ls, "passTest":true})
+    if(ls > li){
+        if(varianzaRi <= ls && varianzaRi >= li){
+            res.json({"varianza":varianzaRi, "limiteInferior": li, "limiteSuperior": ls, "passTest":true})
+        }else{
+            res.json({"varianza":varianzaRi, "limiteInferior": li, "limiteSuperior": ls, "passTest":false})
+        }
     }else{
-        res.json({"varianza":varianzaRi, "limiteInferior": li, "limiteSuperior": ls, "passTest":false})
+        if(varianzaRi >= ls && varianzaRi <= li){
+            res.json({"varianza":varianzaRi, "limiteInferior": li, "limiteSuperior": ls, "passTest":true})
+        }else{
+            res.json({"varianza":varianzaRi, "limiteInferior": li, "limiteSuperior": ls, "passTest":false})
+        }
     }
 
     function calcVarianza(ri,promedioRi){//calcula la varianza de Ri
