@@ -237,7 +237,7 @@ logic.testingVarianza = (req, res) => {
     function calcVarianza(ri,promedioRi){//calcula la varianza de Ri
         var varianza = 0
         for(let i = 0; i < ri.length;i++){
-            varianza += Math.pow((ri[0]-promedioRi),2)
+            varianza += Math.pow((ri[i]-promedioRi),2)
         }
         return varianza/(ri.length-1)
     }
