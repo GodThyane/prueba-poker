@@ -2,20 +2,19 @@ var express = require('express');
 var router = express.Router();
 
 //Petición POST que recibe una lista de Ri
-router.post('/',function (req, res, next) {
-    if(req.body.listRi == undefined || req.body.listRi.length == 0){
+router.post('/', function (req, res, next) {
+    if (req.body.listRi == undefined || req.body.listRi.length == 0) {
         let result = {
             message: 'Lista no ingresada'
         }
         res.send(result);
-    }else{
+    } else {
         let listRi = req.body.listRi;
 
         //Se truncan los números a 5 dígitos
         for (let i = 0; i < listRi.length; i++) {
             listRi[i] = Number.parseFloat(listRi[i]).toFixed(5)
         }
-
 
         let pruebaPoker = new PruebaPoker(listRi);
         let isOk = false;
@@ -25,7 +24,7 @@ router.post('/',function (req, res, next) {
         let result = {
             isOk,
             sum: pruebaPoker.sum,
-            chi2 : pruebaPoker.chi2,
+            chi2: pruebaPoker.chi2,
             results: pruebaPoker.typePoker
         }
         res.send(result);
